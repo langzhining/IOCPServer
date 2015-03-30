@@ -50,6 +50,11 @@ namespace IOCPServer
         /// </summary>
         SocketAsyncEventArgsPool _objectPool;
 
+        /// <summary>
+        /// 请求处理函数
+        /// </summary>
+        Util _util;
+
         private bool disposed = false;
 
         #endregion
@@ -120,6 +125,9 @@ namespace IOCPServer
             _bufferManager = new BufferManager(_bufferSize * _maxClient, _bufferSize);
             _objectPool = new SocketAsyncEventArgsPool(_maxClient);
             _maxAcceptedClients = new Semaphore(_maxClient, _maxClient);
+
+            _util = new Util(this.Encoding, this.ContentPath);
+            _util.ResponseReady += new ResponseEventHandler(OnResponseReady);
         }
 
         #endregion
@@ -242,8 +250,6 @@ namespace IOCPServer
         {
             ProcessAccept(e);
         }
-
-
         
 
         /// <summary>
@@ -328,7 +334,6 @@ namespace IOCPServer
         private void ProcessReceive(SocketAsyncEventArgs e)
         {
             System.Console.WriteLine(e.SocketError.ToString());
-            Util util = new Util(this.Encoding, this.ContentPath);
             if (e.SocketError == SocketError.Success)
             {
                 if(e.BytesTransferred > 0)
@@ -345,19 +350,8 @@ namespace IOCPServer
                         info = Encoding.UTF8.GetString(data);
                         Log4Debug(String.Format("收到 {0} {1}字节 数据为\n{2}", s.RemoteEndPoint.ToString(), data.Length, info));
 
-                        //TODO 处理数据,获取相应数据，并返回处理结果
-                        byte[] response = util.getResData(info);   //耗时，可能会造成等待，考虑能否多线程？ 将util类作为一个线程类                  
-                        Send(e, response);
-
-                        /*
-                         * 数据分段发送，同步
-                         */
-                        //Send((Socket)e.UserToken, response, 0, response.Length, 1000);
-                        //if (!s.SendAsync(e))//为发送下一段数据，投递发送请求，这个函数有可能同步完成，这时返回false，并且不会引发SocketAsyncEventArgs.Completed事件
-                        //{
-                        //    //同步接收时处理接收完成事件
-                        //    ProcessSend(e);
-                        //}
+                        //处理HTTP请求
+                        _util.processRequest(e, info);
                     }
                 }
                 else
@@ -380,6 +374,22 @@ namespace IOCPServer
 
 
         #region 发送数据
+
+        private void OnResponseReady(object sender, ResponseEventArgs e)
+        {
+            //数据异步发送
+            Send(e.ResponseAsyncEventArg, e.ResponseData);
+
+            //数据同步发送
+            //Send((Socket)e.UserToken, response, 0, response.Length, 1000);
+
+            //数据分片发送
+            //if (!s.SendAsync(e))//为发送下一段数据，投递发送请求，这个函数有可能同步完成，这时返回false，并且不会引发SocketAsyncEventArgs.Completed事件
+            //{
+            //    //同步接收时处理接收完成事件
+            //    ProcessSend(e);
+            //}
+        }
 
         /// <summary>
         /// 异步的发送数据
