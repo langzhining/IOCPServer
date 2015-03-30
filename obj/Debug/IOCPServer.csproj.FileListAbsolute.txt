@@ -1,0 +1,10 @@
+c:\users\gcynewstart\documents\visual studio 2012\Projects\IOCPServer\IOCPServer\bin\Debug\IOCPServer.exe
+c:\users\gcynewstart\documents\visual studio 2012\Projects\IOCPServer\IOCPServer\bin\Debug\IOCPServer.pdb
+c:\users\gcynewstart\documents\visual studio 2012\Projects\IOCPServer\IOCPServer\obj\Debug\IOCPServer.csprojResolveAssemblyReference.cache
+c:\users\gcynewstart\documents\visual studio 2012\Projects\IOCPServer\IOCPServer\obj\Debug\IOCPServer.exe
+c:\users\gcynewstart\documents\visual studio 2012\Projects\IOCPServer\IOCPServer\obj\Debug\IOCPServer.pdb
+C:\Users\hwq\Desktop\IOCPServer\IOCPServer\obj\Debug\IOCPServer.exe
+C:\Users\hwq\Desktop\IOCPServer\IOCPServer\obj\Debug\IOCPServer.pdb
+C:\Users\hwq\Desktop\IOCPServer\IOCPServer\bin\Debug\IOCPServer.exe
+C:\Users\hwq\Desktop\IOCPServer\IOCPServer\bin\Debug\IOCPServer.pdb
+C:\Users\hwq\Desktop\IOCPServer\IOCPServer\obj\Debug\IOCPServer.csprojResolveAssemblyReference.cache
