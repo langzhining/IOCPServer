@@ -8,3 +8,8 @@ C:\Users\hwq\Desktop\IOCPServer\IOCPServer\obj\Debug\IOCPServer.pdb
 C:\Users\hwq\Desktop\IOCPServer\IOCPServer\bin\Debug\IOCPServer.exe
 C:\Users\hwq\Desktop\IOCPServer\IOCPServer\bin\Debug\IOCPServer.pdb
 C:\Users\hwq\Desktop\IOCPServer\IOCPServer\obj\Debug\IOCPServer.csprojResolveAssemblyReference.cache
+C:\Users\lang\Desktop\IOCPServer\obj\Debug\IOCPServer.pdb
+C:\Users\lang\Desktop\IOCPServer\bin\Debug\IOCPServer.exe
+C:\Users\lang\Desktop\IOCPServer\bin\Debug\IOCPServer.pdb
+C:\Users\lang\Desktop\IOCPServer\obj\Debug\IOCPServer.csprojResolveAssemblyReference.cache
+C:\Users\lang\Desktop\IOCPServer\obj\Debug\IOCPServer.exe

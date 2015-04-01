@@ -190,7 +190,7 @@ namespace IOCPServer
                                     "HTTP/1.1 " + responseCode + "\r\n"
                                   + "Server: CGLZ Simple Web Server\r\n"
                                   + "Content-Length: " + contentLength + "\r\n"
-                                  + "Connection: close\r\n"
+                                 // + "Connection: close\r\n"
                                   + "Content-Type: " + contentType + "\r\n\r\n");
         }
 
